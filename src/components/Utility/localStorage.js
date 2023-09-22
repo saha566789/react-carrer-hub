@@ -1,22 +1,43 @@
 
 
 
+// const getStoredJobApplication = () =>{
+//     const storedJobApplication = localStorage.getItem('job-applications');
+//     if(storedJobApplication){
+//         return JSON.parse(storedJobApplication)
+//     }
+//     return [];
+// }
+
+// const saveJobApplication = id =>{
+//  const storedJobApplication = getStoredJobApplication()
+//  const exists = storedJobApplication.find(jobId => jobId === id)
+
+//  if(!exists){
+//     storedJobApplication.push(id)
+//     localStorage.setItem('job-applications',JSON.stringify(storedJobApplication))
+//  }
+// }
+
+// export {getStoredJobApplication,saveJobApplication}
+
+
 const getStoredJobApplication = () =>{
     const storedJobApplication = localStorage.getItem('job-applications');
     if(storedJobApplication){
-        return JSON.parse(storedJobApplication)
+        return JSON.parse(storedJobApplication);
     }
     return [];
 }
 
-const saveJobApplication = id =>{
- const storedJobApplication = getStoredJobApplication()
- const exists = storedJobApplication.find(jobId => jobId === id)
 
- if(!exists){
-    storedJobApplication.push(id)
-    localStorage.setItem('job-applications',JSON.stringify(storedJobApplication))
- }
+const saveJobApplication = id =>{
+    const storedJobApplications = getStoredJobApplication();
+    const exists = storedJobApplications.find(jobId => jobId === id);
+    if(!exists){
+        storedJobApplications.push(id);
+        localStorage.setItem('job-applications', JSON.stringify(storedJobApplications))
+    }
 }
 
-export {getStoredJobApplication,saveJobApplication}
+export { getStoredJobApplication, saveJobApplication}
